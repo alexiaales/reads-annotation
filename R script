@@ -1,0 +1,26 @@
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("TxDb.Mmusculus.UCSC.mm39.knownGene")
+BiocManager::install("ChIPseeker")
+BiocManager::install("org.Mm.eg.db")
+library("TxDb.Mmusculus.UCSC.mm39.knownGene")
+library("ChIPseeker")
+library("org.Mm.eg.db")
+
+txdb <- TxDb.Mmusculus.UCSC.mm39.knownGene
+
+peakAnno.edb <- annotatePeak('S57_secondAligned.sortedByCoord.out.bed', tssRegion=c(-3000, 3000),TxDb=txdb, annoDb="org.Mm.eg.db")
+View(peakAnno.edb)
+plotAnnoPie(peakAnno.edb)
+
+peakAnno.edb <- annotatePeak('S56_secondAligned.sortedByCoord.out.bed', tssRegion=c(-3000, 3000),TxDb=txdb, annoDb="org.Mm.eg.db")
+View(peakAnno.edb)
+plotAnnoPie(peakAnno.edb)
+
+peakAnno.edb <- annotatePeak('s57.bed', tssRegion=c(-3000, 3000),TxDb=txdb, annoDb="org.Mm.eg.db")
+View(peakAnno.edb)
+plotAnnoPie(peakAnno.edb)
+
+peakAnno.edb <- annotatePeak('s56.bed', tssRegion=c(-3000, 3000),TxDb=txdb, annoDb="org.Mm.eg.db")
+View(peakAnno.edb)
+plotAnnoPie(peakAnno.edb)
